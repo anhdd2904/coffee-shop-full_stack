@@ -44,4 +44,25 @@ describe('AppComponent', () => {
 
   // TODO: add more tests!
 
+  it('should have the title "My App"', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('My App');
+  });
+  
+  it('should render title in a h1 tag', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to My App!');
+  });
+  
+  it('should call ngOnInit', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    spyOn(app, 'ngOnInit');
+    fixture.detectChanges();
+    expect(app.ngOnInit).toHaveBeenCalled();
+  });
+  
 });
